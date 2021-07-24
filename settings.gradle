@@ -1,0 +1,2 @@
+rootProject.name = "DIYApp"
+include ':app'
