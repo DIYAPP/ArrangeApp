@@ -7,17 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TableLayout
+        android:id="@+id/TableLayout_APP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -49,7 +44,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
-                android:text="현재상태" />
+                android:text="NOW" />
 
             <Button
                 android:id="@+id/buttonABC"
