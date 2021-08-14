@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class recycleViewitem ( val name : String)
+class arrangeViewitem ( val name : String)
 
-class RecycleViewAdapter( private val context: Context) : RecyclerView.Adapter<RecycleViewAdapter.ViewHolder>() {
+class ArrangeListAdapter( private val context: Context) : RecyclerView.Adapter<ArrangeListAdapter.ViewHolder>() {
 
-    var datas = mutableListOf<recycleViewitem>()
+    var datas = mutableListOf<arrangeViewitem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.arrange_list, parent, false)
@@ -25,13 +25,14 @@ class RecycleViewAdapter( private val context: Context) : RecyclerView.Adapter<R
     }
 
 
-    fun getDataList(): MutableList<recycleViewitem> {
-        val dataList = mutableListOf<recycleViewitem>()
+    fun getDataList(): MutableList<arrangeViewitem> {
+        val dataList = mutableListOf<arrangeViewitem>()
 
-        dataList.apply { add(recycleViewitem("Now")) };
-        dataList.apply { add(recycleViewitem("ABC")) };
-        dataList.apply { add(recycleViewitem("Color")) };
-        dataList.apply { add(recycleViewitem("Category")) };
+        /* 앱 정렬 목록 */
+        dataList.apply { add(arrangeViewitem("Now")) };
+        dataList.apply { add(arrangeViewitem("ABC")) };
+        dataList.apply { add(arrangeViewitem("Color")) };
+        dataList.apply { add(arrangeViewitem("Category")) };
 
         return dataList;
     }
@@ -40,11 +41,12 @@ class RecycleViewAdapter( private val context: Context) : RecyclerView.Adapter<R
 
         private val txt: TextView = itemView.findViewById(R.id.list_name)
 
-        fun bind(item: recycleViewitem) {
+        fun bind(item: arrangeViewitem) {
             txt.text = item.name
 
             val pos = adapterPosition
             if (pos != RecyclerView.NO_POSITION) {
+
                 itemView.setOnClickListener {
                     listener?.onClick(itemView, item, pos)
                 }
@@ -53,7 +55,7 @@ class RecycleViewAdapter( private val context: Context) : RecyclerView.Adapter<R
     }
 
     interface OnItemClickListener {
-        fun onClick(v: View, data: recycleViewitem, pos: Int)
+        fun onClick(v: View, data: arrangeViewitem, pos: Int)
     }
 
     private var listener: OnItemClickListener? = null

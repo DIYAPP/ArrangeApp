@@ -19,29 +19,31 @@ class sortmethod: Application() {
 
 class MainActivity : AppCompatActivity(){
 
-    lateinit var recycleAdapter: RecycleViewAdapter
+    lateinit var recycleAdapter: ArrangeListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recycleAdapter = RecycleViewAdapter(this);
+        recycleAdapter = ArrangeListAdapter(this);
         val data = recycleAdapter.getDataList();
         recycle_view.adapter = recycleAdapter;
         recycleAdapter.datas = data
         recycleAdapter.notifyDataSetChanged()
 
 
-/*
-        recycleAdapter.setOnItemClickListener(object : RecycleViewAdapter.OnItemClickListener{
-            override fun onClick(v: View, data: recycleViewitem, pos : Int) {
-                Intent(v.context, SubActivity::class.java).run {
-                    putExtra("name", "name2")
+        recycleAdapter.setOnItemClickListener(object : ArrangeListAdapter.OnItemClickListener{
+            override fun onClick(v: View, data: arrangeViewitem, pos : Int) {
+                Intent(this@MainActivity, AppList::class.java).apply{
+                    /* intent로 정렬 방법을 넘겨준다 */
+                    putExtra("arrangeName", data.name)
+                }.run {
                     startActivity(this)
                 }
             }
         })
-        */
+
+
     }
 
     /** 버튼 클릭시 레이아웃 변경 + 버튼 클릭시 정렬 방식 변경*/

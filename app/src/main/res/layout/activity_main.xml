@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:layout_marginRight="20dp"
         android:layout_weight="4"
         android:text="정렬방식" />
-
+    -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view"
         android:layout_width="match_parent"
@@ -24,11 +25,14 @@
         android:orientation="vertical"
 
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="?attr/selectableItemBackground"
+        android:focusable="true"
         tools:listitem="@layout/arrange_list" />
 
     <!--
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+
     <TableLayout
         android:id="@+id/TableLayout_APP"
         android:layout_width="match_parent"
