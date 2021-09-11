@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -27,10 +28,12 @@ class AppListAdapter (private val context: Context) : RecyclerView.Adapter<AppLi
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val txt: TextView = itemView.findViewById(R.id.applist_name)
+        private val itemName: TextView = itemView.findViewById(R.id.applist_name)
+        private val itemIcon : ImageView = itemView.findViewById(R.id.applist_img)
 
         fun bind(item: appListViewitem) {
-            txt.text = item.name
+            itemName.text = item.name
+            itemIcon.setImageDrawable(item.image)
 
             }
         }

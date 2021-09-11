@@ -45,7 +45,7 @@ class AppList : AppCompatActivity() {
         appItemAdapter = AppListAdapter(this)
 
         appItemAdapter.datas = itemlist
-        appListView.adapter = appItemAdapter
+        appListViewMain.adapter = appItemAdapter
 
         appItemAdapter.notifyDataSetChanged()
 
