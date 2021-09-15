@@ -1,6 +1,7 @@
 package com.example.diyapp
 
 import android.content.Context
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,12 @@ class AppListAdapter (private val context: Context) : RecyclerView.Adapter<AppLi
 
     override fun onBindViewHolder(holder: AppListAdapter.ViewHolder, position: Int) {
         holder.bind(datas[position])
+
+        /* 아이템 크기 조정. 레이아웃에 맞게 조정 필요 */
+        val layoutParams = holder.itemView.layoutParams
+        layoutParams.height = 80
+        holder.itemView.requestLayout()
+
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -37,4 +44,5 @@ class AppListAdapter (private val context: Context) : RecyclerView.Adapter<AppLi
 
             }
         }
+
     }

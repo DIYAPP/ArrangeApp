@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_arrange.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 /** 정렬 방식을 변수로 구분 **/
@@ -27,10 +28,11 @@ class MainActivity : AppCompatActivity(){
 
         recycleAdapter = ArrangeListAdapter(this);
         val data = recycleAdapter.getDataList();
-        recycle_view.adapter = recycleAdapter;
+        recycler_view.adapter = recycleAdapter;
         recycleAdapter.datas = data
         recycleAdapter.notifyDataSetChanged()
 
+        recycler_view.addItemDecoration(ItemDecorator.Vertical(20))
 
         recycleAdapter.setOnItemClickListener(object : ArrangeListAdapter.OnItemClickListener{
             override fun onClick(v: View, data: arrangeViewitem, pos : Int) {

@@ -47,6 +47,7 @@ class AppList : AppCompatActivity() {
         appItemAdapter.datas = itemlist
         appListViewMain.adapter = appItemAdapter
 
+        appListViewMain.addItemDecoration(ItemDecorator.Vertical(20))
         appItemAdapter.notifyDataSetChanged()
 
     }
