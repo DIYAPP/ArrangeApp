@@ -10,8 +10,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class appListViewitem ( val name : String, val image : Drawable)
+class appListViewitem ( val name : String, val image : Drawable, val color : Int) {
 
+}
 class AppListAdapter (private val context: Context) : RecyclerView.Adapter<AppListAdapter.ViewHolder>(){
 
     var datas = mutableListOf<appListViewitem>()
