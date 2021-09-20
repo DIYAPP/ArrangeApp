@@ -6,11 +6,14 @@ import android.graphics.Canvas
 import android.graphics.drawable.*
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.palette.graphics.Palette
 import kotlinx.android.synthetic.main.activity_arrange.*
 import kotlin.collections.ArrayList
+import android.os.Build
+import androidx.annotation.RequiresApi
+
 
 class AppList : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_arrange)
@@ -25,19 +28,17 @@ class AppList : AppCompatActivity() {
 
         for (info: PackageInfo in packages)
         {
-        /* color_number 변수에 app icon image의 Dominant 색상을 추출하여 값을 저장*/
-        var color_number =0
+        /* color_number 변수에 app icon image 특정 픽셀 색상을 추출하여 값을 저장*/
+        var color_number = 0
         val iticon: Drawable = info.applicationInfo.loadIcon(packageManager)
-        /*app icon image를 비트맵으로 변환 후 Palette를 이용하여 app icon image 색상 추출*/
-        Palette.from(bitmap_icon(iticon)).generate{ palette ->
-            if(palette != null) {
-                color_number = palette.getDominantColor(R.attr.color)
-            }
+        /*app icon image를 비트맵으로 변환 후 특정좌표(x,y) 픽셀 ARGB 색상 추출*/
+        val mbitmap : Bitmap = bitmap_icon(iticon)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            color_number = mbitmap.getColor(0, 0).toArgb()
         }
         val it: appListViewitem = appListViewitem(info.applicationInfo.processName, iticon, color_number)
         itemlist.add(it)
         }
-
         //예외처리 필요
         if(name != null) {
             if (name.equals("ABC"))
@@ -61,7 +62,6 @@ class AppList : AppCompatActivity() {
 
         appListViewMain.addItemDecoration(ItemDecorator.Vertical(20))
         appItemAdapter.notifyDataSetChanged()
-
     }
 }
 fun bitmap_icon(iticon : Drawable): Bitmap
