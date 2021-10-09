@@ -9,15 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_arrange.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-/** 정렬 방식을 변수로 구분 **/
-class sortmethod: Application() {
-    lateinit var context: Context
-    init{method=0}
-    companion object{
-        var method = 0
-    }
-}
-
 class MainActivity : AppCompatActivity(){
 
     lateinit var recycleAdapter: ArrangeListAdapter

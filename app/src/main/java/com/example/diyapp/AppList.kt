@@ -1,6 +1,7 @@
 package com.example.diyapp
 
 import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.graphics.drawable.*
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -21,12 +22,15 @@ class AppList : AppCompatActivity() {
 
         var itemlist = arrayListOf<appListViewitem>()
 
+        val ctx = AppContext.context()
         val packageManager = this.packageManager
-        val packages: List<PackageInfo> = packageManager.getInstalledPackages(0)
+        val packages: List<PackageInfo> = packageManager.getInstalledPackages(PackageManager.MATCH_SYSTEM_ONLY)
 
         for (info: PackageInfo in packages) {
-            val iticon: Drawable = info.applicationInfo.loadIcon(packageManager)
-            val it: appListViewitem = appListViewitem(info.applicationInfo.processName, iticon, 0)
+
+            val appIcon = AppInfo().getIcon(info, packageManager)
+            val appName = AppInfo().getAppName(info, packageManager)
+            val it: appListViewitem = appListViewitem(appName, appIcon, 0)
             itemlist.add(it)
         }
         //예외처리 필요
